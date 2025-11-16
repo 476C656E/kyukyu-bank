@@ -40,7 +40,7 @@ class AccountEntity(
 
     @field:Comment("계좌 유형")
     @field:Enumerated(EnumType.STRING)
-    @field:Column(name = "account_status", nullable = false)
+    @field:Column(name = "account_type", nullable = false)
     val type: AccountType,
 
     @field:Comment("계좌 통화")
@@ -52,19 +52,16 @@ class AccountEntity(
     @field:Enumerated(EnumType.STRING)
     @field:Column(name = "account_status", nullable = false)
     var status: AccountStatus,
-
+) {
     @CreationTimestamp
-    @field:Comment("계좌 개설 일시")
-    @field:Column("account_opened_at", nullable = false)
-    val openedAt: LocalDateTime = LocalDateTime.now(),
-
-    @CreationTimestamp
-    @field:Comment("생성 일시")
-    @field:Column("created_at", nullable = false)
-    val createdAt: LocalDateTime = LocalDateTime.now(),
+    @Comment("계좌 개설 일시")
+    @Column(name = "account_opened_at", nullable = false, updatable = false)
+    lateinit var openedAt: LocalDateTime
+        private set
 
     @UpdateTimestamp
-    @field:Comment("수정 일시")
-    @field:Column("updated_at")
-    var updatedAt: LocalDateTime = LocalDateTime.now()
-)
+    @Comment("수정 일시")
+    @Column(name = "updated_at", nullable = false)
+    lateinit var updatedAt: LocalDateTime
+        private set
+}

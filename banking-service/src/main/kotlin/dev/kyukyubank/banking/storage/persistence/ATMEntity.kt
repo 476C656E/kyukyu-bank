@@ -2,17 +2,21 @@ package dev.kyukyubank.banking.storage.persistence
 
 import dev.kyukyubank.banking.common.enums.AccountCurrency
 import jakarta.persistence.Column
+import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.Table
 import org.hibernate.annotations.Comment
 import org.hibernate.annotations.CreationTimestamp
 import java.math.BigDecimal
 import java.time.LocalDateTime
 
 @Comment("현금자동입출기")
+@Entity
+@Table(name = "atm")
 class ATMEntity(
     @field:Id
     @field:GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,9 +42,10 @@ class ATMEntity(
     @field:Enumerated(EnumType.STRING)
     @field:Column(name = "account_currency", nullable = false)
     val currency: AccountCurrency,
-
-    @field:Comment("거래 일시")
+) {
     @CreationTimestamp
-    @field:Column(name = "transaction_date", nullable = false)
-    val transactionDate: LocalDateTime = LocalDateTime.now()
-)
+    @Comment("거래 일시")
+    @Column(name = "transaction_date", nullable = false, updatable = false)
+    lateinit var transactionDate: LocalDateTime
+        private set
+}

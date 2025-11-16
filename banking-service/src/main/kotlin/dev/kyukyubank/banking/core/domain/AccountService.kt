@@ -22,7 +22,8 @@ class AccountService(
                 currency = newAccount.currency,
                 status = newAccount.status,
                 balance = newAccount.balance,
-                )
+
+            )
         )
 
         return saved.id

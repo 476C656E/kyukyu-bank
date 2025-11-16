@@ -3,5 +3,5 @@ package dev.kyukyubank.banking.storage.persistence
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserRepository : JpaRepository<UserEntity, Long> {
-
+    fun findByAccountId(accountId: String): UserEntity?
 }

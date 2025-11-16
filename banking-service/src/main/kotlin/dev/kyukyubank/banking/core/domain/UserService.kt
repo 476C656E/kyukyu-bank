@@ -11,27 +11,6 @@ import org.springframework.transaction.annotation.Transactional
 class UserService(
     private val userRepository: UserRepository
 ) {
-
-    @Transactional
-    fun createUser(newUser: NewUser): Long {
-        val saved = userRepository.save(
-            UserEntity(
-                accountId = newUser.accountId,
-                password = newUser.password,
-                name = newUser.name,
-                nameEn = newUser.nameEn,
-                dateOfBirth = newUser.dateOfBirth
-            )
-        )
-
-        return saved.id
-    }
-
-    @Transactional
-    fun deleteUser(userId: Long) {
-        userRepository.deleteById(userId)
-    }
-
     @Transactional(readOnly = true)
     fun getUser(userId: Long): User {
         val found = userRepository.findById(userId).orElseThrow { CoreException(ErrorType.NOT_FOUND_DATA) }
@@ -39,6 +18,21 @@ class UserService(
         return User(
             id = found.id,
             name = found.name,
+        )
+    }
+
+    @Transactional(readOnly = true)
+    fun login(login: Login): User {
+        val user = userRepository.findByAccountId(login.accountId)
+            ?: throw CoreException(ErrorType.UNAUTHORIZED)
+
+        if (user.password != login.password) {
+            throw CoreException(ErrorType.UNAUTHORIZED)
+        }
+
+        return User(
+            id = user.id,
+            name = user.name
         )
     }
 }

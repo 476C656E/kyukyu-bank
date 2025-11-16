@@ -9,6 +9,12 @@ export default defineConfig({
     port: 8084,
     watch: {
       usePolling: true // This is often needed for HMR in Docker environments
+    },
+    proxy: {
+      '/api': {
+        target: 'http://host.docker.internal:8080',
+        changeOrigin: true,
+      }
     }
   }
 })
