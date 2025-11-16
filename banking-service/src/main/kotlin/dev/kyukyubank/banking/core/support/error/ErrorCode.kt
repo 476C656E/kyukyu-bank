@@ -1,0 +1,9 @@
+package dev.kyukyubank.banking.core.support.error
+
+enum class ErrorCode {
+    E500,
+    E400,
+    E401,
+    E404,
+    E409,
+}

@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  client:
+    container_name: ${PROJECT_NAME}-client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    expose:
+      - "8084"
+    environment:
+      - TZ=${TIMEZONE}
+    restart: always
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8084" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - kyukyu-bank-network
+
+  prometheus:
+    container_name: ${PROJECT_NAME}-prometheus
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "${PROMETHEUS_PORT}:8085"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+    environment:
+      - TZ=${TIMEZONE}
+    restart: always
+    networks:
+      - kyukyu-bank-network
+
+  grafana:
+    container_name: ${PROJECT_NAME}-grafana
+    image: grafana/grafana:latest
+    volumes:
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "${GRAFANA_PORT}:8086"
+    environment:
+      - TZ=${TIMEZONE}
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: always
+    depends_on:
+      - prometheus
+    networks:
+      - kyukyu-bank-network
+
+    mysql:
+      container_name: mysql-dev-server
+      image: mysql:9.5.0
+      ports:
+        - "9093:3306"
+      environment:
+        - MYSQL_ROOT_PASSWORD=${DEV_MYSQL_ROOT_PASSWORD}
+        - MYSQL_DATABASE=${DEV_MYSQL_DATABASE}
+        - MYSQL_USER=${MYSQL_USER}
+        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      volumes:
+        - dev-mysql-data:/var/lib/mysql
+      networks:
+        - kyukyu-test-network
+      env_file:
+        - .env.dev
+
+networks:
+  kyukyu-bank-network:
+    driver: bridge
+
+volumes:
+  prometheus-data:
+  grafana-data:
+  dev-mysql-data:
