@@ -13,7 +13,7 @@ import java.time.LocalDateTime
 @Comment("회원 거래")
 @Entity
 @Table
-class TransactionJpaEntity(
+class TransactionEntity(
 
     @field:Comment("ㅁㄴㅇㅁㅇ?")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

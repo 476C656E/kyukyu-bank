@@ -6,10 +6,17 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
+    volumes:
+      - ./client:/app
+      - /app/node_modules
     expose:
       - "8084"
+    ports:
+      - "8084:8084"
     environment:
       - TZ=${TIMEZONE}
+    stdin_open: true
+    tty: true
     restart: always
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8084" ]
@@ -32,6 +39,7 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention.time=30d'
+      - '--web.listen-address=:8085'
     environment:
       - TZ=${TIMEZONE}
     restart: always
@@ -57,22 +65,25 @@ services:
     networks:
       - kyukyu-bank-network
 
-    mysql:
-      container_name: mysql-dev-server
-      image: mysql:9.5.0
-      ports:
-        - "9093:3306"
-      environment:
-        - MYSQL_ROOT_PASSWORD=${DEV_MYSQL_ROOT_PASSWORD}
-        - MYSQL_DATABASE=${DEV_MYSQL_DATABASE}
-        - MYSQL_USER=${MYSQL_USER}
-        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      volumes:
-        - dev-mysql-data:/var/lib/mysql
-      networks:
-        - kyukyu-test-network
-      env_file:
-        - .env.dev
+  mysql:
+    container_name: ${PROJECT_NAME}-mysql
+    image: mysql:8.4.7
+    ports:
+      - "9093:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DEV_MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DEV_MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - kyukyu-bank-network
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   kyukyu-bank-network:
@@ -81,4 +92,4 @@ networks:
 volumes:
   prometheus-data:
   grafana-data:
-  dev-mysql-data:
+  mysql-data:

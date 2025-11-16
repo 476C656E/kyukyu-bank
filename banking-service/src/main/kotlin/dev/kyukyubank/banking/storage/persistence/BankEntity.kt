@@ -13,7 +13,7 @@ import java.time.LocalDateTime
 @Comment("은행")
 @Entity
 @Table(name = "bank")
-class BankJpaEntity(
+class BankEntity(
     @field:Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,

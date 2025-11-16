@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 @Comment("회원 정보")
 @Entity
 @Table(name = "user")
-class UserJpaEntity(
+class UserEntity(
     @field:Comment("회원 고유번호")
     @field:Id
     @field:GeneratedValue(strategy = GenerationType.IDENTITY)

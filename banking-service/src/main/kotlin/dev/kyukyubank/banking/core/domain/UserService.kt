@@ -2,7 +2,7 @@ package dev.kyukyubank.banking.core.domain
 
 import dev.kyukyubank.banking.core.support.error.CoreException
 import dev.kyukyubank.banking.core.support.error.ErrorType
-import dev.kyukyubank.banking.storage.persistence.UserJpaEntity
+import dev.kyukyubank.banking.storage.persistence.UserEntity
 import dev.kyukyubank.banking.storage.persistence.UserRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -15,7 +15,7 @@ class UserService(
     @Transactional
     fun createUser(newUser: NewUser): Long {
         val saved = userRepository.save(
-            UserJpaEntity(
+            UserEntity(
                 accountId = newUser.accountId,
                 password = newUser.password,
                 name = newUser.name,

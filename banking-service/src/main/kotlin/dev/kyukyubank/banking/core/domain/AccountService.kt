@@ -1,6 +1,6 @@
 package dev.kyukyubank.banking.core.domain
 
-import dev.kyukyubank.banking.storage.persistence.AccountJpaEntity
+import dev.kyukyubank.banking.storage.persistence.AccountEntity
 import dev.kyukyubank.banking.storage.persistence.AccountRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -13,7 +13,7 @@ class AccountService(
     @Transactional
     fun createAccount(userId: Long, newAccount: NewAccount): Long {
         val saved = accountRepository.save(
-            AccountJpaEntity(
+            AccountEntity(
                 userId = userId,
                 accountNumber = newAccount.accountNumber,
                 accountPassword = newAccount.accountPassword,

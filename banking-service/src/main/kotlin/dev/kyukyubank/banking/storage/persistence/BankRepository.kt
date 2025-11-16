@@ -2,4 +2,4 @@ package dev.kyukyubank.banking.storage.persistence
 
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface BankRepository : JpaRepository<BankJpaEntity, String>
+interface BankRepository : JpaRepository<BankEntity, String>

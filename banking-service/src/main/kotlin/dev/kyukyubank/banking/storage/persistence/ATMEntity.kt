@@ -13,7 +13,7 @@ import java.math.BigDecimal
 import java.time.LocalDateTime
 
 @Comment("현금자동입출기")
-class ATMJpaEntity(
+class ATMEntity(
     @field:Id
     @field:GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
