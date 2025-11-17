@@ -1,0 +1,101 @@
+.bank-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.bank-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.bank-header h1 {
+    margin: 0;
+}
+
+.logout-button {
+    background-color: var(--color-red);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f; /* A slightly darker red for hover */
+}
+
+.card {
+    padding: 2em;
+    background-color: var(--color-light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--color-grey-200);
+    color: var(--color-primary-text);
+}
+
+.account-summary .account-details {
+    margin-top: 1rem;
+}
+
+.account-summary .balance {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-green);
+}
+
+.quick-actions .action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.action-button {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    border: none;
+    padding: 15px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #303f9f; /* A slightly darker blue for hover */
+}
+
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.transactions-table th,
+.transactions-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-grey-100);
+}
+
+.transactions-table thead th {
+    background-color: var(--color-light-bg);
+    font-weight: bold;
+}
+
+.transactions-table tbody tr:nth-child(even) {
+    background-color: var(--color-light-bg);
+}
+
+.transactions-table tbody tr:hover {
+    background-color: var(--color-grey-100);
+}
+
+.text-deposit {
+    color: var(--color-green);
+}
+
+.text-withdrawal {
+    color: var(--color-red);
+}

@@ -1,0 +1,21 @@
+:root {
+    /* Primary colors */
+    --color-primary-text: #1E1E1E;
+    --color-secondary-text: #86868b;
+
+    --color-light-bg: #f8f8f8;
+
+    --color-white: #F2F0EF;
+    --color-black: #1a1a1a;
+    --color-grey-50: #f1f1f1;
+    --color-grey-100: #ececec;
+    --color-grey-200: #8e8e8e;
+    --color-grey-300: #565656;
+    --color-blue: #134ad4;
+    --color-red: #c53030;
+    --color-orange: #d77d23;
+    --color-yellow: #d6c622;
+    --color-green: #30C553;
+    --color-teal: #30C5C5;
+    --color-purple: #8A30C5;
+}

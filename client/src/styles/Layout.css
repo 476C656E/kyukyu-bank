@@ -1,0 +1,11 @@
+.layout {
+    padding-top: 128px;
+    display: flex;
+}
+
+.main-content {
+  margin: 1.5rem;
+  width: 100%;
+  flex-grow: 1; /* Ensure it takes up remaining space */
+  overflow-y: auto; /* Allow content to scroll independently */
+}

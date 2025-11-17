@@ -1,0 +1,48 @@
+/* Global Styles */
+@import url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css');
+
+:root {
+}
+
+html {
+    height: 100%;
+    color-scheme: light;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    margin: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+*,
+body,
+html {
+    font-family: Tossface, -apple-system, BlinkMacSystemFont, Bazier Square, Noto Sans KR, Noto Sans JP, Segoe UI, Apple SD Gothic Neo, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    word-wrap: break-word
+}
+
+/* Container */
+main {
+    flex: 1;
+}
+
+.layout {
+    margin: 0 auto;
+    max-width: 64rem; /* 1024px */
+    width: 100%;
+}
