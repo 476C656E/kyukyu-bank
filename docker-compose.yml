@@ -77,7 +77,9 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./banking-service/src/main/resources/db/migration:/docker-entrypoint-initdb.d:ro
+      - ./data:/data
+      - ./banking-service/src/main/resources/db/migration/account_number_sequence.sql:/docker-entrypoint-initdb.d/01-account_number_sequence.sql:ro
+      - ./banking-service/src/main/resources/db/migration/transaction_group_sequence.sql:/docker-entrypoint-initdb.d/02-transaction_group_sequence.sql:ro
     networks:
       - kyukyu-bank-network
     healthcheck:

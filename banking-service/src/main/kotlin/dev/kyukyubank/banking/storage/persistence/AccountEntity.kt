@@ -18,21 +18,9 @@ import java.time.LocalDateTime
         Index(name = "idx_account_number", columnList = "account_number")
     ]
 )
-@TableGenerator(
-    name = "ACCOUNT_ID_GENERATOR",
-    table = "id_sequences",
-    pkColumnName = "sequence_name",
-    valueColumnName = "next_val",
-    pkColumnValue = "account_seq",
-    initialValue = 1,
-    allocationSize = 1
-)
 class AccountEntity(
     @field:Id
-    @field:GeneratedValue(
-        strategy = GenerationType.TABLE,
-        generator = "ACCOUNT_ID_GENERATOR"
-    )
+    @field:GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
     @field:Comment("유저 번호")

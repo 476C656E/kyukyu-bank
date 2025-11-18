@@ -63,12 +63,10 @@ class TransactionEntity(
     @field:Column(name = "status", nullable = false, length = 20)
     val status: TransactionStatus,
 
-    // 타행 송금
     @field:Comment("상대방 은행 코드")
     @field:Column(name = "counter_bank_code", updatable = false, length = 10)
     val counterBankCode: String,
 
-    // 타행 송금
     @field:Comment("상대방 계좌번호")
     @field:Column(name = "counter_account_number", updatable = false, length = 50)
     val counterAccountNumber: String,
@@ -91,7 +89,15 @@ class TransactionEntity(
 
     @field:Comment("거래 메모")
     @field:Column(name = "memo", updatable = false, length = 200)
-    val memo: String
+    val memo: String,
+
+    @field:Comment("송금인 이름")
+    @field:Column(name = "sender_name", updatable = false, length = 100)
+    val senderName: String,
+
+    @field:Comment("수취인 이름")
+    @field:Column(name = "receiver_name", updatable = false, length = 100)
+    val receiverName: String
 ) {
     @CreationTimestamp
     @Comment("거래 발생 일시")

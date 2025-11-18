@@ -2,7 +2,7 @@ package dev.kyukyubank.banking.core.domain
 
 import dev.kyukyubank.banking.common.enums.AccountStatus
 import dev.kyukyubank.banking.common.enums.BankCode
-import dev.kyukyubank.banking.common.util.AccountNumberGenerator
+import dev.kyukyubank.banking.common.utils.AccountNumberGenerator
 import dev.kyukyubank.banking.core.support.OffsetLimit
 import dev.kyukyubank.banking.core.support.Paging
 import dev.kyukyubank.banking.core.support.error.CoreException
