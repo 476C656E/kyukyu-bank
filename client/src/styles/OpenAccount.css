@@ -1,0 +1,224 @@
+.open-account-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.page-header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.form-card {
+  background: transparent;
+  margin-bottom: 2rem;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group-animated {
+  animation: slideInFade 0.4s ease-out;
+}
+
+@keyframes slideInFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group label {
+  font-weight: 700;
+  color: #333;
+  font-size: 1.15rem;
+}
+
+.account-type-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.account-type-button {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.account-type-button:hover {
+  border-color: #256ef4;
+  color: #256ef4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account-type-button.active {
+  border-color: #256ef4;
+  background-color: #256ef4;
+  color: white;
+  font-weight: 600;
+}
+
+.currency-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.currency-button {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.currency-button:hover {
+  border-color: #256ef4;
+  color: #256ef4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.currency-button.active {
+  border-color: #256ef4;
+  background-color: #256ef4;
+  color: white;
+  font-weight: 600;
+}
+
+.currency-icon {
+  font-size: 2rem;
+}
+
+.currency-name {
+  font-size: 0.95rem;
+}
+
+.form-control {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #256ef4;
+}
+
+.form-control.error {
+  border-color: var(--color-red);
+}
+
+.form-control.error:focus {
+  border-color: var(--color-red);
+}
+
+.error-message {
+  color: var(--color-red);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.submit-button {
+  padding: 1rem;
+  background-color: #256ef4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #3d5c85;
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.alert {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.alert-error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+.alert-success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.info-section {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.info-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.info-section ul {
+  list-style-position: inside;
+  color: #666;
+  line-height: 1.8;
+}
+
+.info-section li {
+  margin-bottom: 0.5rem;
+}

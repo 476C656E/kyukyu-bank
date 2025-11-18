@@ -16,8 +16,8 @@ class AuthController(
 ) {
     @PostMapping("/login")
     fun login(@RequestBody request: LoginRequest): ApiResponse<Any> {
-        userService.login(request.toLogin())
+        val login = userService.login(request.toLogin())
 
-        return ApiResponse.success()
+        return ApiResponse.success(login)
     }
 }

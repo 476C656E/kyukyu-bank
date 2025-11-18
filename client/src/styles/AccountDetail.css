@@ -1,0 +1,269 @@
+.account-detail-container {
+    display: grid;
+    gap: 1rem;
+}
+
+.account-detail-header {
+    margin-bottom: 1.5rem;
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.account-detail-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--color-primary-text);
+    font-weight: 600;
+}
+
+.back-button {
+    background-color: transparent;
+    border: none;
+    color: var(--color-primary-text);
+    font-size: 1.5rem;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-button:hover {
+    opacity: 0.6;
+}
+
+.error-message {
+    color: var(--color-red);
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #ffebee;
+    border-radius: 4px;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-secondary-text);
+    font-size: 1rem;
+}
+
+/* 계좌 상세 카드 */
+.account-detail-card {
+    background: #3d5c85;
+    border-radius: 14px;
+    padding: 2rem;
+}
+
+.detail-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.account-title {
+    margin: 0 0 1.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--color-white);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.account-title:hover {
+    opacity: 0.8;
+}
+
+/* 잔액 보기 버튼 */
+.balance-button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: transparent;
+    color: var(--color-white);
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+}
+
+.balance-button:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.balance-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 잔액 표시 */
+.balance-display {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+}
+
+.balance-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--color-white);
+}
+
+.rolling-number {
+    display: inline-flex;
+    align-items: center;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.rolling-number .comma {
+    margin: 0;
+}
+
+.rolling-digit-wrapper {
+    display: inline-block;
+    height: 2rem;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.rolling-digit {
+    display: inline-flex;
+    flex-direction: column;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.rolling-digit .digit {
+    display: block;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.rolling-digit.animate {
+    transform: translateY(calc(-2rem * (10 + var(--target-digit))));
+}
+
+/* 복사 토스트 */
+.copy-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--color-white);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.3s ease-out;
+    z-index: 1000;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(1rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-grey-50);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-size: 1rem;
+    color: var(--color-secondary-text);
+    font-weight: 500;
+}
+
+.detail-value {
+    font-size: 1rem;
+    color: var(--color-primary-text);
+    font-weight: 500;
+}
+
+.detail-value.account-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: 'sans-serif';
+    color: var(--color-primary-text);
+}
+
+/* 계좌 상태 배지 */
+.account-status {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.status-active {
+    background-color: #e8f5e9;
+    color: var(--color-green);
+}
+
+.status-inactive {
+    background-color: #fff3e0;
+    color: var(--color-orange);
+}
+
+.status-closed {
+    background-color: #ffebee;
+    color: var(--color-red);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .account-detail-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .account-detail-card {
+        padding: 1.5rem;
+    }
+
+    .account-title {
+        font-size: 1.25rem;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .detail-value.account-number {
+        font-size: 1.1rem;
+    }
+}

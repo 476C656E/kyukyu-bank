@@ -8,4 +8,9 @@ enum class ErrorType(val status: HttpStatus, val code: ErrorCode, val message: S
     INVALID_REQUEST(HttpStatus.BAD_REQUEST, ErrorCode.E400, "요청을 다시 확인해주세요.", LogLevel.INFO),
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, ErrorCode.E401, "로그인에 실패했어요. 계정 정보를 다시 확인해주세요.", LogLevel.INFO),
     NOT_FOUND_DATA(HttpStatus.BAD_REQUEST, ErrorCode.E404, "해당 데이터를 찾을 수 없어요.", LogLevel.ERROR),
+
+    DUPLICATE_ACCOUNT_NUMBER(HttpStatus.CONFLICT, ErrorCode.E409, "이미 존재하는 계좌번호에요.", LogLevel.ERROR),
+
+    INSUFFICIENT_BALANCE(HttpStatus.UNPROCESSABLE_ENTITY, ErrorCode.E422, "잔액이 부족해요.", LogLevel.INFO),
+    INACTIVE_ACCOUNT(HttpStatus.FORBIDDEN, ErrorCode.E403, "비활성 계좌는 거래할 수 없어요.", LogLevel.INFO)
 }

@@ -25,11 +25,22 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       });
 
       const data = await response.json();
+      console.log('Login response:', data);
 
-      if (response.ok) {
-        onLogin(data.result);
+      if (response.ok && data.result === 'SUCCESS') {
+        // data.data가 userId(숫자) 또는 user 객체여야 함
+        if (typeof data.data === 'number') {
+          // userId만 반환되는 경우
+          onLogin({ id: data.data, name: '' });
+        } else if (data.data && typeof data.data === 'object') {
+          // user 객체가 반환되는 경우
+          onLogin(data.data);
+        } else {
+          console.error('Unexpected login response:', data.data);
+          alert('로그인 응답 형식이 올바르지 않습니다.');
+        }
       } else {
-        alert(data.message || 'An error occurred during login.');
+        alert(data.error?.message || 'An error occurred during login.');
       }
     } catch (error) {
       console.error('Login failed:', error);

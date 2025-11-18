@@ -1,0 +1,183 @@
+.account-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.account-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #333333;
+    font-weight: 700;
+}
+
+.error-message {
+    color: var(--color-red);
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #ffebee;
+    border-radius: 4px;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-secondary-text);
+    font-size: 1rem;
+}
+
+/* 계좌 리스트 */
+.accounts-list {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* 계좌 카드 */
+.account-card {
+    background: #3d5c85;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.account-card:hover {
+    background: var(--color-blue);
+    transform: translateY(-2px);
+}
+
+/* 계좌 카드 헤더 */
+.account-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.account-type {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-white);
+}
+
+.account-status {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.status-active {
+    background-color: var(--color-white);
+    color: var(--color-green);
+}
+
+.status-inactive {
+    background-color: #fff3e0;
+    color: var(--color-orange);
+}
+
+.status-closed {
+    background-color: #ffebee;
+    color: var(--color-red);
+}
+
+/* 계좌번호 */
+.account-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    color: var(--color-white);
+    font-family: 'sans-serif';
+}
+
+/* 계좌 푸터 */
+.account-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.opened-date {
+    font-size: 14px;
+    color: var(--color-white);
+    font-family: 'sans-serif';
+}
+
+/* 빈 상태 */
+.empty-state {
+    text-align: center;
+    padding: 4rem 1rem;
+    background-color: var(--color-light-bg);
+    border-radius: 12px;
+    border: 2px dashed var(--color-grey-100);
+}
+
+.empty-state p {
+    margin-bottom: 1.5rem;
+    color: var(--color-secondary-text);
+    font-size: 1.1rem;
+}
+
+.empty-state button {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.empty-state button:hover {
+    background-color: #303f9f;
+}
+
+/* 더보기 버튼 */
+.load-more-btn {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.875rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-100);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--color-primary-text);
+}
+
+.load-more-btn:hover:not(:disabled) {
+    background-color: var(--color-light-bg);
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+}
+
+.load-more-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .accounts-list {
+        grid-template-columns: 1fr;
+    }
+
+    .account-header h1 {
+        font-size: 1.5rem;
+    }
+}
