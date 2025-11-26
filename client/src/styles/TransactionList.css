@@ -1,0 +1,84 @@
+.transaction-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.transaction-list {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.tx-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tx-date {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 0.25rem;
+}
+
+.tx-memo {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.tx-right {
+    text-align: right;
+}
+
+.tx-amount {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.tx-amount.credit {
+    color: #2e7d32; /* 입금: 초록색 */
+}
+
+.tx-amount.debit {
+    color: #333; /* 출금: 검은색 (토스 스타일) */
+}
+
+.tx-balance {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #888;
+}
+
+.load-more-btn {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 1rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.load-more-btn:hover {
+    background: #f5f5f5;
+}

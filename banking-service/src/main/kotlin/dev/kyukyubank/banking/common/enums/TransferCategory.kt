@@ -1,15 +1,9 @@
 package dev.kyukyubank.banking.common.enums
 
 enum class TransferCategory {
-    // 당행 송금
+    // 당행 이체
     INTERNAL,
 
-    // 타행 송금
-    EXTERNAL,
-
-    // 입금
-    DEPOSIT,
-
-    // 출금
-    WITHDRAWAL
+    // 타행 이체
+    EXTERNAL
 }

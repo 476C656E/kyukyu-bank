@@ -13,9 +13,13 @@ import java.time.LocalDateTime
 class UserEntity(
     @field:Id
     @field:GeneratedValue(strategy = GenerationType.IDENTITY)
-    @field:Comment("회원 고유번호")
     val id: Long = 0,
 
+    @field:Comment("회원 고유번호")
+    @field:Column(name = "ulid", nullable = false, updatable = false, columnDefinition = "VARCHAR(26)")
+    val ulid: String,
+
+    // FK 용
     @field:Comment("회원 계정 아이디")
     @field:Column(name = "account_id", unique = true, nullable = false)
     val accountId: String,

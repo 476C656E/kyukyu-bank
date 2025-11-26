@@ -45,6 +45,11 @@ const Sidebar: React.FC<SidebarProps> = ({ user, onLogout }) => {
                   옵션
               </NavLink>
           </li>
+          <li className="sidebar__item">
+              <NavLink to="/mock" className={getNavLinkClass}>
+                  Mock 관리
+              </NavLink>
+          </li>
       </ul>
 
       {(user || onLogout) && (

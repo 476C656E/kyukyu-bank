@@ -3,6 +3,8 @@ import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Bank from './pages/Bank.tsx';
 import Account from './pages/Account.tsx';
 import AccountDetail from './pages/AccountDetail.tsx';
+import MockManager from './pages/MockManager.tsx';
+import TransactionList from './pages/TransactionList.tsx';
 import Login from './pages/Login';
 import OpenAccount from './pages/OpenAccount';
 import './styles/App.css';
@@ -43,6 +45,8 @@ function App() {
       <Route path="/accounts" element={user ? <Account user={user} onLogout={handleLogout} /> : <Navigate to="/login" />} />
       <Route path="/accounts/:accountId" element={user ? <AccountDetail user={user} onLogout={handleLogout} /> : <Navigate to="/login" />} />
       <Route path="/open-accounts" element={user ? <OpenAccount user={user} onLogout={handleLogout} /> : <Navigate to="/login" />} />
+      <Route path="/mock" element={user ? <MockManager user={user} onLogout={handleLogout} /> : <Navigate to="/login" />} />
+      <Route path="/transactions" element={user ? <TransactionList user={user} onLogout={handleLogout} /> : <Navigate to="/login" />} />
       <Route path="/" element={<Navigate to={user ? "/banks" : "/login"} />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

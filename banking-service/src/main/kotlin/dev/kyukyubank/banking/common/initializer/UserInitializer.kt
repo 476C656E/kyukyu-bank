@@ -14,6 +14,7 @@ class UserInitializer(
     override fun run(args: ApplicationArguments?) {
         if (userRepository.count() == 0L) {
             val user = UserEntity(
+                ulid = "01ARZ3NDEKTSV4RRFFQ69G5FAV", // 임의의 ULID
                 accountId = "test",
                 password = "asd123",
                 name = "치와와",

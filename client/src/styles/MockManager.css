@@ -1,0 +1,133 @@
+.mock-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.mock-header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+    color: #333;
+}
+
+.mock-header p {
+    margin: 0;
+    color: #666;
+}
+
+.control-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.card p {
+    color: #888;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.button-group button {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.button-group button:hover:not(:disabled) {
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+.button-group button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.button-group button.danger {
+    color: #d32f2f;
+    border-color: #ffcdd2;
+    background: #ffebee;
+}
+
+.button-group button.danger:hover:not(:disabled) {
+    background: #ffcdd2;
+}
+
+/* 로그 콘솔 */
+.log-console {
+    background: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #e0e0e0;
+    font-family: monospace;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.log-header {
+    background: #2d2d2d;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.clear-btn {
+    background: transparent;
+    border: 1px solid #555;
+    color: #aaa;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.clear-btn:hover {
+    border-color: #888;
+    color: white;
+}
+
+.log-content {
+    padding: 1.5rem;
+    overflow-y: auto;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.log-line {
+    word-break: break-all;
+    line-height: 1.4;
+}
+
+.empty-log {
+    color: #555;
+    text-align: center;
+    margin-top: 2rem;
+}
