@@ -10,22 +10,22 @@ services:
       - ./client:/app
       - /app/node_modules
     expose:
-      - "8084"
+      - "9091"
     ports:
-      - "8084:8084"
+      - "9091:9091"
     environment:
       - TZ=${TIMEZONE}
     stdin_open: true
     tty: true
     restart: always
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8084" ]
+      test: [ "CMD", "curl", "-f", "http://localhost:9091" ]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
     networks:
-      - kyukyu-bank-network
+      - kyukyu-bank
 
   prometheus:
     container_name: ${PROJECT_NAME}-prometheus
@@ -34,43 +34,45 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus-data:/prometheus
     ports:
-      - "${PROMETHEUS_PORT}:8085"
+      - "${PROMETHEUS_PORT}:9095"
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention.time=30d'
-      - '--web.listen-address=:8085'
+      - '--web.listen-address=:9095'
     environment:
       - TZ=${TIMEZONE}
     restart: always
     networks:
-      - kyukyu-bank-network
+      - kyukyu-bank
 
   grafana:
     container_name: ${PROJECT_NAME}-grafana
     image: grafana/grafana:latest
     volumes:
       - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
     ports:
-      - "${GRAFANA_PORT}:8086"
+      - "${GRAFANA_PORT}:9096"
     environment:
       - TZ=${TIMEZONE}
-      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
-      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
-      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+      - GF_SERVER_HTTP_PORT=9096
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-test}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-asd123}
       - GF_USERS_ALLOW_SIGN_UP=false
     restart: always
     depends_on:
       - prometheus
     networks:
-      - kyukyu-bank-network
+      - kyukyu-bank
 
   mysql:
     container_name: ${PROJECT_NAME}-mysql
     image: mysql:8.4.7
     ports:
-      - "9093:3306"
+      - "3307:3307"
     environment:
+      - MYSQL_TCP_PORT=3307
       - MYSQL_ROOT_PASSWORD=${DEV_MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${DEV_MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
@@ -81,7 +83,7 @@ services:
       - ./banking-service/src/main/resources/db/migration/account_number_sequence.sql:/docker-entrypoint-initdb.d/01-account_number_sequence.sql:ro
       - ./banking-service/src/main/resources/db/migration/transaction_group_sequence.sql:/docker-entrypoint-initdb.d/02-transaction_group_sequence.sql:ro
     networks:
-      - kyukyu-bank-network
+      - kyukyu-bank
     healthcheck:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       interval: 10s
@@ -89,7 +91,7 @@ services:
       retries: 5
 
 networks:
-  kyukyu-bank-network:
+  kyukyu-bank:
     driver: bridge
 
 volumes:

@@ -14,12 +14,12 @@ class UserInitializer(
     override fun run(args: ApplicationArguments?) {
         if (userRepository.count() == 0L) {
             val user = UserEntity(
-                ulid = "01ARZ3NDEKTSV4RRFFQ69G5FAV", // 임의의 ULID
+                ulid = "01ARZ3NDEKTSV4RRFFQ69G5FAV",
                 accountId = "test",
                 password = "asd123",
                 name = "치와와",
                 nameEn = "Chihuahua",
-                dateOfBirth = LocalDate.of(1995, 3, 3)
+                dateOfBirth = LocalDate.of(1988, 8, 8)
             )
             userRepository.save(user)
         }
